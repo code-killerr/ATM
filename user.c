@@ -1,3 +1,4 @@
+//提供了可以清空用户数据的功能 
 #include<stdio.h>
 #include<stdlib.h>
 #include<conio.h>
@@ -21,26 +22,29 @@ main()//数据储存 读取 注册
 	FILE*name,*num;
 	if((name=fopen("user.dat","r+"))==NULL)
 	{
-		printf("name文件创建成功");
-		if((num=fopen("user.dat","a+"))==NULL) 
+		printf("user文件创建");
+		if((fopen("user.dat","a+"))==NULL) 
 			{
-			printf("name文件打开失败，请先启动ATM主程序再打开后台");
-			_getch();
-			exit(0);
+				printf("失败");
+				_getch();
+				exit(0);
 			}
+			else
+				printf("成功");
 	}
 	if((num=fopen("num.dat","r+"))==NULL)
 	{
-		printf("num文件创建成功");
+		printf("创建num文件");
 		if((num=fopen("num.dat","a+"))==NULL)
-			printf("num文件打开失败，请先启动ATM主程序再打开后台");
+			printf("失败");
 		else
 		    {
+		    	printf("成功"); 
 		   		fputc(0,num);//重置用户数量
 		   		fclose(num);
 			}
 		_getch();
-		exit(0); 
+		exit(0);
 	}
 	number=fgetc(num);	 
 	printf("%d",number);
@@ -63,7 +67,29 @@ for(i=0;i<number;i++)
      printf("账号:%d  密码:%s  余额:%f\n",date[i].user,date[i].password,date[i].money);
      printf("开卡时间:%s",date[i].tim);
  }
-	 _getch();  
+ printf("输入c清空数据");
+	 if(_getch()=='c')
+	 {
+	 	int a=MessageBox(NULL,"是否确认要清空全部数据","警告",MB_OKCANCEL);
+			if (a==IDOK)
+			{
+				if((num=fopen("num.dat","w+"))==NULL)
+						printf("num清除失败");
+					else
+					{
+						printf("num清除成功");
+						fputc(0,num);//重置用户信息 
+					 } 
+				if((fopen("user.dat","w+"))==NULL)
+						printf("user清除失败");
+					else
+					{
+						printf("user清除成功");
+						fputc(0,num);//重置用户信息 
+					 } 
+			    
+			}
+	 }
 fclose(name);
 fclose(num);
 }
