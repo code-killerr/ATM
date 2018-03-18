@@ -52,11 +52,13 @@ void file()//数据储存 读取 注册
 	if((user_real_name=fopen("user.dat","r+"))==NULL)//打开相关文件
 	{
 		printf("user文件打开失败，请先启动ATM后台程序进行初始化");
+		_getch();
 		exit(0);
 	}
 	if((num=fopen("num.dat","r+"))==NULL)
 	{
 		printf("num文件打开失败，请先启动ATM后台程序进行初始化");
+		_getch();
 		exit(0);
 	}
 	number=fgetc(num);
