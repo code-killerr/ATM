@@ -24,3 +24,7 @@
 
 ## 注意事项： 
 **第一次打开时应先打开user.exe进行数据初始化**
+
+<img src = "https://github.com/code-killerr/ATM/blob/master/1.png" height = 200px weigth = 33%>
+<img src = "https://github.com/code-killerr/ATM/blob/master/2.png" height = 200px weigth = 33%>
+<img src = "https://github.com/code-killerr/ATM/blob/master/3.png" height = 200px weigth = 33%>
